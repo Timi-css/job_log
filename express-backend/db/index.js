@@ -18,7 +18,7 @@ client
   .then(() => console.log("DB Connected Successfully"))
 
   .then(() => client.query("SELECT * FROM users"))
-  .then((reuslt) => console.table(reuslt.rows))
+  // .then((reuslt) => console.table(reuslt.rows))
   .catch((e) => console.log(`Error connecting to Postgres server: \n${e}`));
 
 module.exports = client;
