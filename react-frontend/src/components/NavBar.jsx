@@ -9,6 +9,34 @@ const NavBar = () => {
           JOBLOG
         </a>
       </div>
+
+      <div className="nav-links-container">
+        <li className="nav-link-list">
+          <a className="nav-link" href="/">
+            Home
+          </a>
+        </li>
+        <li className="nav-link-list">
+          <a className="nav-link" href="/Login">
+            Dashboard
+          </a>
+        </li>
+        <li className="nav-link-list">
+          <a className="nav-link" href="/About">
+            About
+          </a>
+        </li>
+        <li className="nav-link-list">
+          <a className="nav-link" href="/Login">
+            Login
+          </a>
+        </li>
+        <li className="nav-link-list">
+          <a className="nav-link-signup" href="/SignUp">
+            SignUp
+          </a>
+        </li>
+      </div>
     </div>
   );
 };

@@ -1,6 +1,10 @@
 .main-nav-container {
-  height: 50px;
   width: 100%;
+  padding: 20px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .logo {
@@ -8,4 +12,43 @@
   text-decoration: none;
   color: #000;
   font-weight: 800;
+}
+
+.nav-links-container {
+  display: flex;
+  flex-direction: row;
+  width: 40%;
+  justify-content: space-evenly;
+}
+
+.nav-link-list {
+  list-style: none;
+}
+
+.nav-link {
+  text-decoration: none;
+  font-size: 14px;
+  color: #000;
+  transition: 0.2s all ease-in;
+}
+
+.nav-link:hover {
+  color: #3a74a6;
+}
+
+.nav-link-signup {
+  border: 1px solid #000;
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-decoration: none;
+  color: #000;
+  font-size: 14px;
+}
+
+.nav-link-signup:hover {
+  background-color: #3a74a6;
+  padding: 10px 20px;
+  border-radius: 5px;
+  color: #fff;
+  border: 1px solid #3a74a6;
 }
