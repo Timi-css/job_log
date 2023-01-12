@@ -1,0 +1,54 @@
+.main-hero-container {
+  margin: 6rem 0;
+}
+
+.hero-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.hero-header-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.hero-header {
+  font-size: 3.6rem;
+}
+
+.hero-header-applications {
+  color: #3a74a6;
+}
+
+.hero-description {
+  line-height: 1.6rem;
+}
+
+.cta-button-box {
+  display: flex;
+  margin: 20px 0;
+}
+
+.cta-button {
+  text-decoration: none;
+  color: #fff;
+  background-color: #3a74a6;
+  padding: 14px 40px;
+  border-radius: 10px;
+}
+
+.cta-button:hover {
+  border: 1px solid #3a74a6;
+  color: #3a74a6;
+  background: none;
+}
+
+.hero-image-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero-image {
+  width: 35rem;
+}
