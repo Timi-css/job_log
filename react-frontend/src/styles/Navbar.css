@@ -1,10 +1,10 @@
 .main-nav-container {
   width: 100%;
-  padding-top: 20px;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+  padding: 20px 0;
 }
 
 .logo {
@@ -29,7 +29,7 @@
   text-decoration: none;
   font-size: 14px;
   color: #000;
-  transition: 0.2s all ease-in;
+  transition: 0.3s all ease-in;
 }
 
 .nav-link:hover {
@@ -51,4 +51,5 @@
   border-radius: 5px;
   color: #fff;
   border: 1px solid #3a74a6;
+  transition: 0.3s all ease-in;
 }

@@ -1,0 +1,65 @@
+.main-footer-container {
+  background-color: #3a74a6;
+  padding: 20px 40px;
+  height: 10rem;
+  width: auto;
+  margin-top: 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.logo-box {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+.footer-logo {
+  font-family: "Outfit", sans-serif;
+  text-decoration: none;
+  color: #fff;
+  font-weight: 800;
+}
+
+.footer-link-box {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.footer-link-list {
+  list-style: none;
+}
+.footer-link {
+  text-decoration: none;
+  color: #fff;
+  margin-right: 40px;
+}
+
+.footer-link-signup {
+  border: 1px solid #fff;
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-decoration: none;
+  color: #fff;
+  font-size: 14px;
+}
+
+.footer-link-signup:hover {
+  background-color: #fff;
+  padding: 10px 20px;
+  border-radius: 5px;
+  color: #3a74a6;
+  border: 1px solid #fff;
+  transition: 0.3s all ease-in;
+}
+
+.copyright-box {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.copyright {
+  color: #fff;
+}
