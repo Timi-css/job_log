@@ -1,8 +1,5 @@
 import "./App.css";
-import Body from "./components/Body";
-import Footer from "./components/Footer";
-import HeroSection from "./components/HeroSection";
-import NavBar from "./components/NavBar";
+import { Body, Footer, NavBar, HeroSection, SignUp } from "./components";
 
 function App() {
   return (
@@ -11,6 +8,7 @@ function App() {
         <NavBar />
         <HeroSection />
         <Body />
+        <SignUp />
       </div>
       <Footer />
     </div>
