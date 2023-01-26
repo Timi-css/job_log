@@ -24,7 +24,9 @@ const SignUp = () => {
         </div>
       </div>
       <div className="signup-image-container">
-        <img className="signup-img" src={images.Signup} alt="Signup" />
+        <div className="signup-image-box">
+          <img className="signup-img" src={images.Signup} alt="Signup" />
+        </div>
       </div>
     </div>
   );

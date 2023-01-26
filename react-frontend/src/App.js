@@ -1,17 +1,27 @@
 import "./App.css";
-import { Body, Footer, NavBar, HeroSection, SignUp } from "./components";
+import {
+  Body,
+  Footer,
+  NavBar,
+  HeroSection,
+  SignUp,
+  Dashboard,
+} from "./components";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
   return (
-    <div className="App">
+    <BrowserRouter>
       <div className="main-App">
         <NavBar />
-        <HeroSection />
-        <Body />
-        <SignUp />
+        <Routes>
+          <Route path="/" exact element={<HeroSection />} />
+          <Route path="/SignUp" exact element={<SignUp />} />
+          <Route path="/Dashboard" exact element={<Dashboard />} />
+        </Routes>
+        <Footer />
       </div>
-      <Footer />
-    </div>
+    </BrowserRouter>
   );
 }
 

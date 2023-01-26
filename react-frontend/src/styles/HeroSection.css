@@ -6,8 +6,10 @@
 .hero-container {
   display: grid;
   grid-template-columns: 1fr 1fr;
+  margin-bottom: 15rem;
 }
 .hero-header-box {
+  align-items: center;
   display: flex;
   flex-direction: column;
   justify-content: center;

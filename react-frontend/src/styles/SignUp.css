@@ -1,6 +1,11 @@
 .main-signup-container {
   display: flex;
   flex-direction: row;
+  height: 100%;
+  padding: 0 5rem;
+  margin: 2rem 0 10rem 0;
+  align-items: center;
+  justify-content: center;
 }
 
 .signup-form-container {
@@ -30,7 +35,12 @@
 }
 
 .signup-image-container {
-  background-color: #3a74a6;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* background-color: #3a74a6; */
+  width: auto;
 }
 
 .signup-img {
@@ -43,6 +53,10 @@
   background-color: #3a74a6;
   padding: 14px 40px;
   border-radius: 5px;
+  width: 70%;
+  box-shadow: none;
+  border: none;
+  cursor: pointer;
 }
 
 .signup-btn:hover {

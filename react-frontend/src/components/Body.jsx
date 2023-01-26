@@ -1,6 +1,7 @@
 import React from "react";
 import { images } from "../constants";
 import "../styles/Body.css";
+import HeroSection from "./HeroSection";
 
 const Body = () => {
   return (
