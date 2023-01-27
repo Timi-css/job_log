@@ -6,6 +6,7 @@ import {
   HeroSection,
   SignUp,
   Dashboard,
+  Login,
 } from "./components";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
@@ -18,6 +19,7 @@ function App() {
           <Route path="/" exact element={<HeroSection />} />
           <Route path="/SignUp" exact element={<SignUp />} />
           <Route path="/Dashboard" exact element={<Dashboard />} />
+          <Route path="/Login" exact element={<Login />} />
         </Routes>
         <Footer />
       </div>

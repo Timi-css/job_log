@@ -1,0 +1,82 @@
+.main-dashboard-container {
+  display: flex;
+  padding: 0 2rem;
+  flex-direction: column;
+  margin-bottom: 8rem;
+}
+
+.dash-header {
+  color: #3a74a6;
+}
+
+.new-app-container {
+  display: flex;
+  width: 95%;
+  padding: 2rem;
+  border-bottom: 1px solid #8a8686;
+  margin-bottom: 20px;
+}
+
+.new-app-box {
+  display: flex;
+  width: 100%;
+  justify-content: end;
+}
+
+.new-app-btn {
+  text-decoration: none;
+  color: #fff;
+  background-color: #3a74a6;
+  padding: 14px 40px;
+  border-radius: 5px;
+}
+
+.new-app-btn:hover {
+  border: 1px solid #3a74a6;
+  color: #3a74a6;
+  background: none;
+  transition: 0.3s all ease-in;
+}
+
+.app-table {
+  width: 100%;
+}
+
+.app-tr {
+  text-align: left;
+}
+
+.app-td {
+  background-color: #fff;
+  padding: 10px 20px;
+}
+.app-td:first-child {
+  border-radius: 5px 0 0px 5px;
+}
+
+.app-td:last-child {
+  border-radius: 0px 5px 5px 0px;
+}
+
+.app-th {
+  padding: 10px 20px;
+}
+
+.edit-btn {
+  width: 30px;
+  height: 30px;
+  color: #3a74a6;
+  cursor: pointer;
+}
+
+.delete-btn {
+  width: 30px;
+  height: 30px;
+  color: #c70000;
+  cursor: pointer;
+}
+.icons-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
