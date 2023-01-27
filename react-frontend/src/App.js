@@ -7,6 +7,7 @@ import {
   SignUp,
   Dashboard,
   Login,
+  NewApplication,
 } from "./components";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
@@ -20,6 +21,7 @@ function App() {
           <Route path="/SignUp" exact element={<SignUp />} />
           <Route path="/Dashboard" exact element={<Dashboard />} />
           <Route path="/Login" exact element={<Login />} />
+          <Route path="/NewApplication" exact element={<NewApplication />} />
         </Routes>
         <Footer />
       </div>

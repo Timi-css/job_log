@@ -1,10 +1,17 @@
 import React from "react";
 import Table from "react-bootstrap/Table";
 import "../styles/Dashboard.css";
-import { BiEdit, BiTrash } from "react-icons/bi";
 import { RiEditBoxLine, RiDeleteBin6Line } from "react-icons/ri";
+import "./NewApplication";
+import NewApplication from "./NewApplication";
+import { useState } from "react";
 
 const Dashboard = () => {
+  const [showNewAppBox, setShowNewAppBox] = useState(false);
+  const cancel = () => {
+    setShowNewAppBox(false);
+  };
+
   return (
     <div className="main-dashboard-container">
       <div className="dash-header-box">
@@ -12,8 +19,13 @@ const Dashboard = () => {
       </div>
 
       <div className="new-app-container">
-        <div className="new-app-box">
-          <a className="new-app-btn" href="/addnewapplication">
+        <div className="new-app">
+          <a
+            className="new-app-btn"
+            onClick={() => {
+              setShowNewAppBox(true);
+            }}
+          >
             Add new application +{" "}
           </a>
         </div>
@@ -43,7 +55,6 @@ const Dashboard = () => {
               <RiDeleteBin6Line className="delete-btn" />
             </div>
           </tr>
-
           <tr className="app-tr">
             <td className="app-td">Full Stack Engineer</td>
             <td className="app-td">Amazon</td>
@@ -58,6 +69,11 @@ const Dashboard = () => {
             </div>
           </tr>
         </Table>
+        <NewApplication
+          show={showNewAppBox}
+          title="new application?"
+          cancel={cancel}
+        />
       </div>
     </div>
   );

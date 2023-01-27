@@ -1,0 +1,78 @@
+.main-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  position: fixed;
+  top: 100px;
+}
+
+.new-app-box {
+  background-color: #fff;
+  padding: 4rem;
+  width: 60%;
+  border-radius: 15px;
+  box-shadow: 4px 8px 8px hsl(0deg 0% 0% / 0.18);
+}
+
+.new-app-form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.new-app-form input {
+  height: 30px;
+  margin-bottom: 15px;
+  padding: 5px 5px 5px 20px;
+  background-color: #fff;
+  border: 1px solid #d0d1d2;
+  border-radius: 5px;
+  font-family: "Outfit", sans-serif;
+}
+
+.btn-box {
+  display: flex;
+  width: 100%;
+  justify-content: space-evenly;
+  margin-top: 20px;
+}
+
+.save-btn {
+  width: 18rem;
+  height: 3rem;
+  background-color: #346997;
+  color: #fff;
+  font-family: "Outfit", sans-serif;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease-in;
+}
+
+.save-btn:hover {
+  color: #346997;
+  background-color: #fff;
+  border: 1px solid #346997;
+  border-radius: 5px;
+  transition: all 0.3s ease-in;
+}
+
+.cancel-btn:hover {
+  color: #c70000;
+  background-color: #fff;
+  border: 1px solid #c70000;
+  border-radius: 5px;
+  transition: all 0.3s ease-in;
+}
+
+.cancel-btn {
+  width: 18rem;
+  height: 3rem;
+  background-color: #c70000;
+  color: #fff;
+  font-family: "Outfit", sans-serif;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
