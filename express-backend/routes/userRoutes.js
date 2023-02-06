@@ -74,7 +74,7 @@ router.post("/login", async (req, res) => {
 
 // Get all users
 
-router.get("/userlist", async (req, res) => {
+router.get("/userlists", async (req, res) => {
   const query = req.body.new;
 
   try {
