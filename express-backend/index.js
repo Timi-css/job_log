@@ -3,7 +3,8 @@ const app = express();
 const PORT = process.env.PORT || 8080;
 const cors = require("cors");
 const mongoose = require("mongoose");
-require("dotenv").config();
+const dotenv = require("dotenv").config();
+const userRoute = require("./routes/userRoutes");
 
 app.use(cors());
 app.use(express.json());
@@ -12,15 +13,9 @@ app.get("/api", (req, res) => {
   res.json({ message: "Server is now connected to client" });
 });
 
-// DB connection
-// mongoose
-//   .connect(process.env.MONGO_URL)
-//   .then(() => {
-//     console.log("DB is connected");
-//   })
-//   .catch((err) => {
-//     console.log(err, "DB is disconnected");
-//   });
+app.get("/hello", (req, res) => {
+  res.send("Hello!");
+});
 
 mongoose
   .connect(process.env.MONGO_URL, {
@@ -32,7 +27,8 @@ mongoose
   )
   .catch((error) => console.log(error.message));
 
-mongoose.set("strictQuery", true);
+app.use("/api", userRoute);
+
 // PORT connection
 // app.listen(PORT, () => {
 //   console.log(`Server is running on ${PORT}`);
