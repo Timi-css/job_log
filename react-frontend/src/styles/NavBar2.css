@@ -1,0 +1,58 @@
+.main-nav2-container {
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 40px;
+  position: sticky;
+  top: 0;
+  background-color: #d3dee7;
+}
+
+.logo {
+  font-family: "Outfit", sans-serif;
+  text-decoration: none;
+  color: #000;
+  font-weight: 800;
+}
+
+.nav-links-container {
+  display: flex;
+  flex-direction: row;
+  width: 40%;
+  justify-content: space-evenly;
+}
+
+.nav-link-list {
+  list-style: none;
+}
+
+.nav-link {
+  text-decoration: none;
+  font-size: 14px;
+  color: #000;
+  transition: 0.3s all ease-in;
+}
+
+.nav-link:hover {
+  color: #3a74a6;
+}
+
+.nav-link-signup {
+  border: 1px solid #000;
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-decoration: none;
+  color: #000;
+  font-size: 14px;
+}
+
+.nav-link-signup:hover {
+  background-color: #3a74a6;
+  padding: 10px 20px;
+  border-radius: 5px;
+  color: #fff;
+  border: 1px solid #3a74a6;
+  transition: 0.3s all ease-in;
+}

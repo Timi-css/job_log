@@ -7,3 +7,4 @@ export { default as Login } from "./Login";
 export { default as NavBar } from "./NavBar";
 export { default as NewApplication } from "./NewApplication";
 export { default as SignUp } from "./SignUp";
+export { default as NavBar2 } from "./NavBar2";

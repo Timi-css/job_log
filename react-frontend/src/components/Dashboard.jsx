@@ -1,10 +1,10 @@
 import React from "react";
-import Table from "react-bootstrap/Table";
 import "../styles/Dashboard.css";
 import { RiEditBoxLine, RiDeleteBin6Line } from "react-icons/ri";
 import "./NewApplication";
 import NewApplication from "./NewApplication";
 import { useState } from "react";
+import { Table } from "react-bootstrap";
 
 const Dashboard = () => {
   const [showNewAppBox, setShowNewAppBox] = useState(false);
@@ -32,7 +32,7 @@ const Dashboard = () => {
       </div>
 
       <div className="app-table-container">
-        <Table className="app-table" striped>
+        <Table className="app-table">
           <tr className="app-tr">
             <th className="app-th">Job Title</th>
             <th className="app-th">Company</th>

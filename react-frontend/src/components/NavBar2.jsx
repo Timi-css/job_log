@@ -1,13 +1,12 @@
 import React from "react";
 import { useState } from "react";
-import "../styles/Navbar.css";
+import "../styles/NavBar2.css";
 import SignUp from "./SignUp";
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
-import { NavBar2 } from ".";
 
 const NavBar = () => {
   return (
-    <div className="main-nav-container">
+    <div className="main-nav2-container">
       <div className="logo-box">
         <a href="/" className="logo">
           JOBLOG
@@ -30,14 +29,10 @@ const NavBar = () => {
             About
           </a>
         </li>
+
         <li className="nav-link-list">
-          <a className="nav-link" href="/login">
-            Login
-          </a>
-        </li>
-        <li className="nav-link-list">
-          <a className="nav-link-signup" href="signup">
-            SignUp
+          <a className="nav-link-signup" href="/">
+            Log out
           </a>
         </li>
       </div>
