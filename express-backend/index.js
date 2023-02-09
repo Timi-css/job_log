@@ -9,27 +9,26 @@ const userRoute = require("./routes/userRoutes");
 app.use(cors());
 app.use(express.json());
 
-app.get("/api", (req, res) => {
-  res.json({ message: "Server is now connected to client" });
-});
-
 app.get("/hello", (req, res) => {
   res.send("Hello!");
 });
 
 mongoose
-  .connect(process.env.MONGO_URL, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
+  .connect(process.env.MONGO_URL)
+  .then(() => {
+    console.log("DB is connected");
   })
-  .then(() =>
-    app.listen(PORT, () => console.log(`Server is running on port: ${PORT}`))
-  )
-  .catch((error) => console.log(error.message));
+  .catch((err) => {
+    console.log(err, "DB unreachable");
+  });
 
 app.use("/api", userRoute);
 
+app.get("/api", (req, res) => {
+  res.json({ message: "Backend is now connected to react" });
+});
+
 // PORT connection
-// app.listen(PORT, () => {
-//   console.log(`Server is running on ${PORT}`);
-// });
+app.listen(PORT, () => {
+  console.log(`Server is running on ${PORT}`);
+});

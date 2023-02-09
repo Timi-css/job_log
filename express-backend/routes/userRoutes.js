@@ -87,4 +87,19 @@ router.get("/userlists", async (req, res) => {
   }
 });
 
+router.get("/:id", (req, res) => {
+  const id = req.params.id;
+  User.findById(id, (err, user) => {
+    if (err) {
+      return res.status(500).json({ error: err });
+    }
+
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    res.json({ user });
+  });
+});
+
 module.exports = router;
