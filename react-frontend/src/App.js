@@ -9,6 +9,7 @@ import {
   Login,
   NewApplication,
 } from "./components";
+import { Error, Loader } from "./common";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import React from "react";
 import { PrivateRoute } from "./components/PrivateRoute";
@@ -31,6 +32,8 @@ function App() {
           <Route path="/signup" exact element={<SignUp />} />
           <Route path="/dashboard" exact element={<Dashboard />} />
           <Route path="/login" exact element={<Login />} />
+          <Route path="/error" exact element={<Error />} />
+          <Route path="/loader" exact element={<Loader />} />
           <Route path="/NewApplication" exact element={<NewApplication />} />
         </Routes>
         <Footer />

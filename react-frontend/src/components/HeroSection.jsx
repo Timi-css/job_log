@@ -10,8 +10,8 @@ const HeroSection = () => {
         <div className="hero-header-box">
           <div className="hero-header-subbox">
             <h1 className="hero-header">
-              Organize your <br></br>
-              <span className="hero-header-applications">applications</span>
+              Take Control of Your Job <br></br>
+              <span className="hero-header-applications">Applications</span>
             </h1>
             <p className="hero-description">
               Allow job log to do the work of sorting your job applications for
@@ -26,7 +26,7 @@ const HeroSection = () => {
         </div>
 
         <div className="hero-image-box">
-          <img className="hero-image" src={images.Hero} alt="hero-img" />
+          <img className="hero-image" src={images.HeroTwo} alt="hero-img" />
         </div>
       </div>
       <Body />

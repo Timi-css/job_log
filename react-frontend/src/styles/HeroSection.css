@@ -6,7 +6,7 @@
 .hero-container {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  margin-bottom: 15rem;
+  margin-bottom: 10rem;
 }
 .hero-header-box {
   align-items: center;
@@ -14,13 +14,17 @@
   flex-direction: column;
   justify-content: center;
 }
+.hero-header-box {
+  background-color: #00100b;
+  color: #f5f5f5;
+}
 
 .hero-header {
   font-size: 3.6rem;
 }
 
 .hero-header-applications {
-  color: #3a74a6;
+  color: #59cd90;
 }
 
 .hero-description {
@@ -34,15 +38,15 @@
 
 .cta-button {
   text-decoration: none;
-  color: #fff;
-  background-color: #3a74a6;
+  color: #00100b;
+  background-color: #59cd90;
   padding: 14px 40px;
   border-radius: 5px;
 }
 
 .cta-button:hover {
-  border: 1px solid #3a74a6;
-  color: #3a74a6;
+  border: 1px solid #f5f5f5;
+  color: #f5f5f5;
   background: none;
   transition: 0.3s all ease-in;
 }
@@ -55,4 +59,26 @@
 
 .hero-image {
   width: 35rem;
+}
+
+@media only screen and (max-width: 390px) {
+  .hero-container {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+  .hero-header-box {
+    margin-bottom: 10rem;
+  }
+  .hero-header-subbox {
+    display: flex;
+    flex-direction: column;
+    width: auto;
+    padding: 20px;
+  }
+  .hero-header {
+    font-size: 2.6rem;
+  }
+  .hero-image {
+    width: 20rem;
+  }
 }

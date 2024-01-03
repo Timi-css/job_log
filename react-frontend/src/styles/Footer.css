@@ -1,13 +1,15 @@
 .main-footer-container {
-  background-color: #3a74a6;
+  background-color: #00100b;
   padding: 20px 40px;
-  height: 10rem;
-  width: auto;
+  height: auto;
   margin-top: 3rem;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
   bottom: 0;
+  position: static;
 }
 
 .logo-box {
@@ -18,7 +20,7 @@
 .footer-logo {
   font-family: "Outfit", sans-serif;
   text-decoration: none;
-  color: #fff;
+  color: #f5f5f5;
   font-weight: 800;
 }
 
@@ -26,6 +28,7 @@
   display: flex;
   flex-direction: row;
   justify-content: center;
+  width: 100%;
 }
 
 .footer-link-list {
@@ -33,25 +36,25 @@
 }
 .footer-link {
   text-decoration: none;
-  color: #fff;
+  color: #f5f5f5;
   margin-right: 40px;
 }
 
 .footer-link-signup {
-  border: 1px solid #fff;
   padding: 10px 20px;
   border-radius: 5px;
   text-decoration: none;
-  color: #fff;
+  color: #00100b;
+  background-color: #59cd90;
   font-size: 14px;
 }
 
 .footer-link-signup:hover {
-  background-color: #fff;
+  background: none;
   padding: 10px 20px;
   border-radius: 5px;
-  color: #3a74a6;
-  border: 1px solid #fff;
+  color: #f5f5f5;
+  border: 1px solid #f5f5f5;
   transition: 0.3s all ease-in;
 }
 
@@ -63,4 +66,29 @@
 
 .copyright {
   color: #fff;
+}
+
+@media only screen and (max-width: 390px) {
+  .main-footer-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 20rem;
+  }
+  .footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 90%;
+  }
+  .footer-link-box {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 30px;
+    align-items: center;
+  }
+  .footer-link-list {
+    margin-top: 20px;
+  }
 }

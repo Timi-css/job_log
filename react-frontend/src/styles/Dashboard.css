@@ -13,14 +13,14 @@
   display: flex;
   width: 95%;
   padding: 2rem;
-  border-bottom: 1px solid #d0d1d2;
+  border-bottom: 1px solid #f5f5f5;
   margin-bottom: 20px;
 }
 
 .new-app {
   display: flex;
   width: 100%;
-  justify-content: end;
+  justify-content: flex-end;
   cursor: pointer;
 }
 

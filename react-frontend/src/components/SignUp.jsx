@@ -1,35 +1,63 @@
-import React from "react";
+import React, { useState } from "react";
 import { images } from "../constants";
 import "../styles/SignUp.css";
-import { useToken } from "../auth/useToken";
-import { useState, useEffect } from "react";
-import axios from "axios";
+import useApi from "../hooks/useApi";
 import { useNavigate } from "react-router-dom";
+import { Error } from "../common";
 
-const SignUp = (props) => {
-  const [errorMessage, setErrorMaessage] = useState("");
-  const [token, setToken] = useToken();
-
+const SignUp = () => {
   const navigate = useNavigate();
+  const url = "http://localhost:8080/api/signup";
+  const { loading, error, setLoading } = useApi(url);
 
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [username, setUsername] = useState("");
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
+  const [formData, setFormData] = useState({
+    applicationId: "",
+    username: "",
+    firstName: "",
+    lastName: "",
+    email: "",
+    password: "",
+  });
 
-  const onSignUpClicked = async () => {
-    alert("sign up clicked");
-    const response = await axios.post("/api/signup", {
-      email: email,
-      password: password,
-      username: username,
-      firstName: firstName,
-      lastName: lastName,
-    });
-    const { token } = response.data;
-    setToken(token);
-    navigate("/dashboard");
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      setLoading(true);
+      const response = await fetch(url, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok === false) {
+        console.log(response.ok);
+        const responseData = await response.json();
+        if (responseData === "User Exists") {
+          // Handle username existence error
+          console.error("Error: User already exists");
+          // Set an error state or display a message to the user
+        } else {
+          // Handle other errors
+          console.error("Error:", responseData.error);
+        }
+      } else {
+        // Signup successful, you may redirect or perform other actions
+        const responseData = await response.json();
+        console.log("Signup Successful:", responseData);
+      }
+    } catch (error) {
+      console.error("Error:", error.message);
+    } finally {
+      setLoading(false);
+      navigate("/login");
+    }
   };
 
   return (
@@ -39,48 +67,61 @@ const SignUp = (props) => {
           <h1 className="signup-header">Sign Up</h1>
         </div>
         <div className="signup-form">
-          <form className="form">
+          <form className="form" onSubmit={handleSubmit}>
             <input
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
+              placeholder="ApplicationID"
+              id="form-input"
+              name="applicationId"
+              type="text"
+              value={formData.applicationId}
+              onChange={handleChange}
+            />
+            <input
               placeholder="Username"
               id="form-input"
+              name="username"
+              type="text"
+              value={formData.username}
+              onChange={handleChange}
             />
             <input
-              value={firstName}
-              onChange={(e) => setFirstName(e.target.value)}
               placeholder="First Name"
               id="form-input"
+              name="firstName"
+              type="text"
+              value={formData.firstName}
+              onChange={handleChange}
             />
             <input
-              value={lastName}
-              onChange={(e) => setLastName(e.target.value)}
               placeholder="Last Name"
               id="form-input"
+              name="lastName"
+              type="text"
+              value={formData.lastName}
+              onChange={handleChange}
             />
             <input
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
               placeholder="Email"
               id="form-input"
+              name="email"
+              type="email"
+              value={formData.email}
+              onChange={handleChange}
             />
             <input
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
               type="password"
               placeholder="Password"
               id="form-input"
+              name="password"
+              value={formData.password}
+              onChange={handleChange}
             />
+            {loading && <p>Loading...</p>}
+            {error && error}
+            <button type="submit" className="signup-btn">
+              Sign Up
+            </button>
           </form>
-
-          <a
-            aria-disabled={!email || !password}
-            onClick={onSignUpClicked}
-            className="signup-btn"
-            href="/login"
-          >
-            Sign Up
-          </a>
         </div>
       </div>
       <div className="signup-image-container">

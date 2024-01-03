@@ -1,11 +1,14 @@
-import React from "react";
-import { useState } from "react";
+import { FaBars, FaCreativeCommonsSampling, FaTimes } from "react-icons/fa";
 import "../styles/Navbar.css";
-import SignUp from "./SignUp";
-import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
-import { NavBar2 } from ".";
+import { images } from "../constants";
+import { useRef } from "react";
 
 const NavBar = () => {
+  const navRef = useRef();
+
+  const showNavBar = () => {
+    navRef.current.classList.toggle("responsive_nav");
+  };
   return (
     <div className="main-nav-container">
       <div className="logo-box">
@@ -14,7 +17,7 @@ const NavBar = () => {
         </a>
       </div>
 
-      <div className="nav-links-container">
+      <ul className={`nav-links-container `}>
         <li className="nav-link-list">
           <a className="nav-link" href="/">
             Home
@@ -40,7 +43,14 @@ const NavBar = () => {
             SignUp
           </a>
         </li>
-      </div>
+      </ul>
+
+      <button onClick={showNavBar}>
+        <FaTimes />
+      </button>
+      <button onClick={showNavBar}>
+        <FaBars />
+      </button>
     </div>
   );
 };

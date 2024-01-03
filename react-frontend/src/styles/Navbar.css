@@ -6,7 +6,11 @@
   padding: 20px 40px;
   position: sticky;
   top: 0;
-  background-color: #d3dee7;
+  background-color: #f4f2f3;
+}
+
+.menu-icon {
+  height: 2em;
 }
 
 .logo {
@@ -19,7 +23,7 @@
 .nav-links-container {
   display: flex;
   flex-direction: row;
-  width: 40%;
+  width: 50%;
   justify-content: space-evenly;
 }
 
@@ -35,7 +39,7 @@
 }
 
 .nav-link:hover {
-  color: #3a74a6;
+  color: #59cd90;
 }
 
 .nav-link-signup {
@@ -48,10 +52,18 @@
 }
 
 .nav-link-signup:hover {
-  background-color: #3a74a6;
+  background-color: #59cd90;
   padding: 10px 20px;
   border-radius: 5px;
   color: #fff;
-  border: 1px solid #3a74a6;
+  border: 1px solid #59cd90;
   transition: 0.3s all ease-in;
+}
+
+.ul {
+  list-style: none;
+  display: flex;
+}
+
+@media only screen and (min-width: 390px) {
 }
