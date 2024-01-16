@@ -29,7 +29,7 @@
   height: 30px;
   margin-bottom: 15px;
   padding: 5px 5px 5px 20px;
-  background-color: #fff;
+  background-color: #000;
   border: none;
   border-radius: 5px;
 }
@@ -39,7 +39,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  /* background-color: #3a74a6; */
+  /* background-color:  #59cd90; */
   width: auto;
 }
 
@@ -51,8 +51,8 @@
 
 .login-btn {
   text-decoration: none;
-  color: #fff;
-  background-color: #3a74a6;
+  color: #000;
+  background-color: #59cd90;
   padding: 14px 40px;
   border-radius: 5px;
   width: 70%;
@@ -63,8 +63,8 @@
 }
 
 .login-btn:hover {
-  border: 1px solid #3a74a6;
-  color: #3a74a6;
+  border: 1px solid #59cd90;
+  color: #59cd90;
   background: none;
   transition: 0.3s all ease-in;
 }
@@ -75,9 +75,9 @@
 }
 
 .login-google-btn {
-  border: 1px solid #3a74a6;
-  color: #3a74a6;
-  background: none;
+  border: 1px solid #59cd90;
+  color: #59cd90;
+  background-color: #fff;
   transition: 0.3s all ease-in;
   padding: 14px 40px;
   border-radius: 5px;
@@ -88,13 +88,13 @@
 
 .login-google-btn:hover {
   text-decoration: none;
-  color: #fff;
-  background-color: #3a74a6;
+  color: #000;
+  background: none;
   padding: 14px 40px;
   border-radius: 5px;
   width: 70%;
   box-shadow: none;
-  border: none;
+  border: 1px solid #59cd90;
   cursor: pointer;
   margin-right: 20px;
 }
@@ -106,5 +106,5 @@
 .forgot-password {
   text-decoration: none;
   font-size: 10px;
-  color: #3a74a6;
+  color: #000;
 }

@@ -1,5 +1,5 @@
-import Login from "../assets/Login.png";
-import Signup from "../assets/Signup.png";
+import Login from "../assets/Login.svg";
+import Signup from "../assets/Signup.svg";
 import Hero from "../assets/Hero.png";
 import Coordination from "../assets/Coordination.png";
 import Google from "../assets/Google.png";
