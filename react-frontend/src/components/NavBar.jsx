@@ -1,4 +1,4 @@
-import { FaBars, FaCreativeCommonsSampling, FaTimes } from "react-icons/fa";
+import { FaBars, FaTimes } from "react-icons/fa";
 import "../styles/Navbar.css";
 import { images } from "../constants";
 import { useRef } from "react";
@@ -17,7 +17,7 @@ const NavBar = () => {
         </a>
       </div>
 
-      <ul className={`nav-links-container `}>
+      <nav ref={navRef} className="nav-links-container">
         <li className="nav-link-list">
           <a className="nav-link" href="/">
             Home
@@ -43,12 +43,12 @@ const NavBar = () => {
             SignUp
           </a>
         </li>
-      </ul>
+      </nav>
 
-      <button onClick={showNavBar}>
+      <button className="nav-btn nav-close-btn" onClick={showNavBar}>
         <FaTimes />
       </button>
-      <button onClick={showNavBar}>
+      <button className="nav-btn" onClick={showNavBar}>
         <FaBars />
       </button>
     </div>

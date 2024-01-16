@@ -42,28 +42,61 @@
   color: #59cd90;
 }
 
-.nav-link-signup {
+.nav-link-signup:hover {
   border: 1px solid #000;
   padding: 10px 20px;
   border-radius: 5px;
-  text-decoration: none;
+
   color: #000;
   font-size: 14px;
+  background: none;
 }
 
-.nav-link-signup:hover {
+.nav-link-signup {
   background-color: #59cd90;
   padding: 10px 20px;
   border-radius: 5px;
-  color: #fff;
+  color: #000;
   border: 1px solid #59cd90;
   transition: 0.3s all ease-in;
+  text-decoration: none;
+  font-size: 14px;
 }
 
-.ul {
-  list-style: none;
-  display: flex;
+.nav-btn {
+  padding: 5px;
+  cursor: pointer;
+  color: #59cd90;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: 20px;
+  visibility: hidden;
+  opacity: 0;
 }
 
-@media only screen and (min-width: 390px) {
+@media only screen and (max-width: 1024px) {
+  .nav-btn {
+    visibility: visible;
+    opacity: 1;
+  }
+
+  /* .nav-links-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    background-color: #59cd90;
+    transition: 1s;
+    flex-direction: column;
+  } */
+
+  .responsive_nav {
+    transform: none;
+  }
 }
