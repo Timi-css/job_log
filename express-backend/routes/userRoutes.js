@@ -1,22 +1,28 @@
-const router = require("express").Router();
+const express = require("express");
+const app = express();
 const User = require("../model/User");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
-const cors = require("cors");
 const dotenv = require("dotenv").config();
+const saltRounds = 10;
+const salt = bcrypt.genSaltSync(saltRounds);
+const authMiddleware = require("../middleware/authMiddleware");
 
-router.use(cors());
+// app.use(cors());
 
 // Sign Up Route
-router.post("/signup", async (req, res) => {
+app.post("/signup", async (req, res) => {
+  console.log("SignUP Starting");
   const { username, firstName, lastName, email, password } = req.body;
 
-  const hashedPassword = await bcrypt.hash(password, 10);
+  const hashedPassword = await bcrypt.hash(password, salt);
 
   try {
     const existingUser = await User.findOne({ email, username });
+
     if (existingUser) {
-      return res.send({ error: "User Exists" });
+      console.log("Cannot register same user twice!");
+      return res.status(409).json({ error: "User Exists" });
     }
 
     await User.create({
@@ -26,44 +32,44 @@ router.post("/signup", async (req, res) => {
       email,
       password: hashedPassword,
     });
-
-    jwt.sign(
-      {
-        email,
-        username,
-        firstName,
-        lastName,
-        password,
-      },
-      process.env.JWT_SECRET,
-      {
-        expiresIn: "2d",
-      },
-      (err, token) => {
-        if (err) {
-          return res.status(500).send(err);
-        }
-        res.status(200).json({ token });
-      }
-    );
+    res.json("User Created");
+    console.log("Signup Successful");
   } catch (err) {
+    console.log("Error creating user");
+
+    console.error(err.message);
     res.status(500).json(err);
   }
 });
 
-// login route
-router.post("/login", async (req, res) => {
-  const { email, password } = req.body;
+function authenticateToken(req, res, next) {
+  const authHeader = req.headers["authorization"];
+  const token = authHeader && authHeader.split(" ")[1];
 
+  if (token == null) return res.sendStatus(400);
+
+  jwt.verify(token, process.env.JWT_SECRET, (err, user) => {
+    if (err) return res.sendStatus(403);
+    req.user = user;
+    console.log(user);
+    next();
+  });
+}
+
+// login route
+app.post("/login", async (req, res) => {
+  const { email, password } = req.body;
+  // Find the user by their email
   const user = await User.findOne({ email });
 
   if (!user) {
     return res.json({ error: "Email or password is incorrect" });
   }
   if (bcrypt.compareSync(password, user.password)) {
-    const token = jwt.sign({}, process.env.JWT_SECRET);
-    if (res.status(201)) {
-      return res.json({ status: "ok", data: token });
+    const accessToken = jwt.sign({ user }, process.env.JWT_SECRET);
+    if (res.statusCode === 201 || 200) {
+      console.log("Login Successful");
+      return res.json({ status: "ok", data: accessToken });
     } else {
       return res.json({ error: "error" });
     }
@@ -74,7 +80,8 @@ router.post("/login", async (req, res) => {
 
 // Get all users
 
-router.get("/userlists", async (req, res) => {
+app.get("/userlists", async (req, res) => {
+  console.log("Uh-oh, someone made a req, are they verified");
   const query = req.body.new;
 
   try {
@@ -87,19 +94,34 @@ router.get("/userlists", async (req, res) => {
   }
 });
 
-router.get("/:id", (req, res) => {
+// Get one user
+app.get("/user", authMiddleware, async (req, res) => {
+  try {
+    // Access user information from the request (added by the authentication middleware)
+    const user = req.user;
+    res.status(200).json(user);
+  } catch (error) {
+    console.error("Error fetching user data:", error.message);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+});
+
+app.get("/application", async (req, res) => {});
+
+app.get("/:id", async (req, res) => {
   const id = req.params.id;
-  User.findById(id, (err, user) => {
-    if (err) {
-      return res.status(500).json({ error: err });
-    }
+
+  try {
+    const user = await User.findById(id).exec();
 
     if (!user) {
       return res.status(404).json({ message: "User not found" });
     }
 
     res.json({ user });
-  });
+  } catch (err) {
+    return res.status(500).json({ error: err.message });
+  }
 });
 
-module.exports = router;
+module.exports = app;
