@@ -2,16 +2,16 @@ import React, { useState } from "react";
 import { images } from "../constants";
 import "../styles/SignUp.css";
 import useApi from "../hooks/useApi";
+
 import { useNavigate } from "react-router-dom";
 import { Error } from "../common";
 
 const SignUp = () => {
   const navigate = useNavigate();
   const url = "http://localhost:8080/api/signup";
-  const { loading, error, setLoading } = useApi(url);
+  const { loading, setLoading } = useApi(url);
 
   const [formData, setFormData] = useState({
-    applicationId: "",
     username: "",
     firstName: "",
     lastName: "",
@@ -23,8 +23,22 @@ const SignUp = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+  const [localError, setLocalError] = useState(null);
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const requiredFields = [
+      "username",
+      "firstName",
+      "lastName",
+      "email",
+      "password",
+    ];
+    const emptyField = requiredFields.find((field) => !formData[field]);
+
+    if (emptyField) {
+      console.log("Empty fields");
+      setLocalError(`Please fill in the missing field(s)`);
+    }
 
     try {
       setLoading(true);
@@ -36,27 +50,29 @@ const SignUp = () => {
         body: JSON.stringify(formData),
       });
 
-      if (response.ok === false) {
-        console.log(response.ok);
+      console.log("RESPONSE HERE: ", response.status);
+      if (response.status === 200) {
+        // Handle successful response
         const responseData = await response.json();
-        if (responseData === "User Exists") {
+        console.log("Succesful Signup", responseData);
+        navigate("/login");
+        console.log("HERE ", response.status);
+      } else {
+        // Handle errors for non-successful responses
+        // const responseData = await response.json();
+        if (response.status === 409) {
           // Handle username existence error
           console.error("Error: User already exists");
-          // Set an error state or display a message to the user
+          alert("User Exists");
         } else {
           // Handle other errors
-          console.error("Error:", responseData.error);
+          console.error("Error:", response.status);
         }
-      } else {
-        // Signup successful, you may redirect or perform other actions
-        const responseData = await response.json();
-        console.log("Signup Successful:", responseData);
       }
     } catch (error) {
       console.error("Error:", error.message);
     } finally {
       setLoading(false);
-      navigate("/login");
     }
   };
 
@@ -68,14 +84,6 @@ const SignUp = () => {
         </div>
         <div className="signup-form">
           <form className="form" onSubmit={handleSubmit}>
-            <input
-              placeholder="ApplicationID"
-              id="form-input"
-              name="applicationId"
-              type="text"
-              value={formData.applicationId}
-              onChange={handleChange}
-            />
             <input
               placeholder="Username"
               id="form-input"
@@ -117,7 +125,7 @@ const SignUp = () => {
               onChange={handleChange}
             />
             {loading && <p>Loading...</p>}
-            {error && error}
+            {localError && <Error message={localError} />}
             <button type="submit" className="signup-btn">
               Sign Up
             </button>

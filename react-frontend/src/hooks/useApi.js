@@ -12,6 +12,9 @@ const useApi = (endpoint) => {
 
       try {
         const response = await fetch(endpoint);
+        if (!response.ok) {
+          throw new Error("Error fetching data");
+        }
         const result = await response.json();
         setData(result.message);
       } catch (error) {
