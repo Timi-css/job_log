@@ -11,8 +11,12 @@ const ApplicationSchema = new mongoose.Schema({
   jobTitle: { type: String, required: true },
   company: { type: String, required: true },
   dateApplied: { type: Date, required: true },
-  resume: { type: String, required: true },
-  coverLetter: { type: String, required: true },
+  resumePath: { type: String, required: true },
+  coverLetterPath: { type: String, required: true },
+  interviewStage: { type: String, required: false },
+  offerStatus: { type: String, required: false },
+  jobDescription: { type: String, requiored: false },
+  notes: { type: String, required: false },
 });
 
 module.exports = mongoose.model("Application", ApplicationSchema);

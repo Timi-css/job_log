@@ -63,19 +63,19 @@ app.post("/login", async (req, res) => {
   const user = await User.findOne({ email });
 
   if (!user) {
-    return res.json({ error: "Email or password is incorrect" });
+    return res.status(401).json({ error: "Email or password is incorrect" });
   }
   if (bcrypt.compareSync(password, user.password)) {
     const accessToken = jwt.sign({ user }, process.env.JWT_SECRET);
     if (res.statusCode === 201 || 200) {
       console.log("Login Successful");
-      return res.json({ status: "ok", data: accessToken });
+      return res.json({ status: "ok", token: accessToken });
     } else {
-      return res.json({ error: "error" });
+      return res.status(500).json({ error: "Error Loggin in" });
     }
   }
 
-  res.json({ status: "error", error: "Invalid Password" });
+  res.status(401).json({ error: "Invalid Password or Credentials" });
 });
 
 // Get all users

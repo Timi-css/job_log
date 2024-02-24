@@ -6,6 +6,8 @@ const mongoose = require("mongoose");
 const dotenv = require("dotenv").config();
 const userRoute = require("./routes/userRoutes.js");
 const applicationRoutes = require("./routes/applicationRoutes.js");
+const multer = require("multer");
+// File Upload
 
 app.use(cors());
 app.use(express.json());
