@@ -5,7 +5,7 @@ const Error = ({ message }) => {
   return (
     <div className="container-error-msg ">
       <div className="error-msg-box">
-        <p className="error-msg">Error(s): {message}</p>
+        <p className="error-msg">Error: {message}</p>
       </div>
     </div>
   );

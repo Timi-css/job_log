@@ -1,3 +1,9 @@
+/* 
+Background: #E5E9E7
+Accent:  #8B9793
+Main: #182F28
+Secondary: #C5E863
+*/
 .main-dashboard-container {
   display: flex;
   padding: 0 2rem;
@@ -6,7 +12,8 @@
 }
 
 .dash-header {
-  color: #59cd90;
+  color: #182f28;
+  font-weight: 500;
 }
 
 .new-app-container {
@@ -26,15 +33,18 @@
 
 .new-app-btn {
   text-decoration: none;
-  color: #000;
-  background-color: #59cd90;
-  padding: 14px 40px;
+  color: #c5e863;
+  background-color: #182f28;
+  padding: 14px 30px;
   border-radius: 5px;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
 }
 
 .new-app-btn:hover {
-  border: 1px solid #59cd90;
-  color: #59cd90;
+  border: 1px solid #182f28;
+  color: #182f28;
   background: none;
   transition: 0.3s all ease-in;
 }
@@ -50,6 +60,10 @@
 .app-td {
   background-color: #fff;
   padding: 10px 20px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  max-width: 150px;
 }
 .app-td:first-child {
   border-radius: 5px 0 0px 5px;
@@ -62,6 +76,7 @@
 .app-th {
   padding: 10px 20px;
   font-weight: 500;
+  font-size: 20px;
 }
 
 .edit-btn {
@@ -81,4 +96,9 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.job-link {
+  color: #89a145;
+  text-decoration: none;
 }

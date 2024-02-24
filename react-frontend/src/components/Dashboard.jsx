@@ -1,5 +1,3 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
-/* eslint-disable react/jsx-no-comment-textnodes */
 import React, { useEffect, useState } from "react";
 import "../styles/Dashboard.css";
 import { RiEditBoxLine, RiDeleteBin6Line } from "react-icons/ri";
@@ -8,7 +6,8 @@ import NewApplication from "./NewApplication";
 import { Table } from "react-bootstrap";
 import useUserApplication from "../hooks/useUserApplication";
 import useApi from "../hooks/useApi";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
+import { Loader, PDFViewer } from "../common";
 
 const Dashboard = () => {
   const [showNewAppBox, setShowNewAppBox] = useState(false);
@@ -25,7 +24,6 @@ const Dashboard = () => {
     data: applications,
     error: appError,
   } = useUserApplication();
-
   console.log("DATA HERE: ", applications);
 
   useEffect(() => {
@@ -49,6 +47,7 @@ const Dashboard = () => {
         if (response.ok) {
           const userData = await responseJson;
           setUser(userData.user);
+          console.log(`DASH HERE: ${userData}`);
         } else {
           // Handle error cases
           console.error("Error fetching user data");
@@ -70,35 +69,34 @@ const Dashboard = () => {
     setShowNewAppBox(false);
   };
 
-  //   useEffect(() => {
-  //     setLoading(true);
-  //   }, [setLoading]);
   if (userLoading || appLoading) {
-    return <p>Loading...</p>;
+    return <Loader />;
   }
 
   if (userError || appError) {
     console.error("Error:", userError || appError);
     return <p>Error fetching data</p>;
   }
+
   return (
     <div className="main-dashboard-container">
       <div>
         <div className="dash-header-box">
-          <h1 className="dash-header">Hello {user ? user.username : "User"}</h1>
+          <h1 className="dash-header">
+            Welcome, {user ? user.username : "User"}
+          </h1>
         </div>
 
         <div className="new-app-container">
           <div className="new-app">
-            <a
+            <button
               className="new-app-btn"
               onClick={() => {
                 setShowNewAppBox(true);
               }}
-              href=""
             >
               Add new application +{" "}
-            </a>
+            </button>
           </div>
         </div>
 
@@ -118,17 +116,17 @@ const Dashboard = () => {
             <tbody>
               {applications.map((app) => (
                 <tr className="app-tr">
-                  <td className="app-td">{app.jobTitle}</td>
+                  <td className="app-td">
+                    <Link className="job-link" to={`/job-detail/${app._id}`}>
+                      {app.jobTitle}
+                    </Link>
+                  </td>
                   <td className="app-td">{app.company}</td>
                   <td className="app-td">{app.dateApplied}</td>
                   <td className="app-td">Final stage</td>
                   <td className="app-td">Accepted</td>
-                  <td className="app-td">{app.resume}</td>
-                  <td className="app-td">{app.coverLetter}</td>
-                  <div className="icons-box">
-                    <RiEditBoxLine className="edit-btn" />
-                    <RiDeleteBin6Line className="delete-btn" />
-                  </div>
+                  <td className="app-td">{app.resumePath}</td>
+                  <td className="app-td"> {app.coverLetterPath}</td>
                 </tr>
               ))}
             </tbody>

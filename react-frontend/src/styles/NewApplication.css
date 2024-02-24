@@ -1,3 +1,10 @@
+/* 
+Background: #E5E9E7
+Accent:  #8B9793
+Main: #182F28
+Secondary: #C5E863
+*/
+
 .main-container {
   display: flex;
   align-items: center;
@@ -41,7 +48,7 @@
 .save-btn {
   width: 18rem;
   height: 3rem;
-  background-color: #346997;
+  background-color: #182f28;
   color: #fff;
   font-family: "Outfit", sans-serif;
   border: none;
@@ -51,9 +58,9 @@
 }
 
 .save-btn:hover {
-  color: #346997;
+  color: #182f28;
   background-color: #fff;
-  border: 1px solid #346997;
+  border: 1px solid #182f28;
   border-radius: 5px;
   transition: all 0.3s ease-in;
 }

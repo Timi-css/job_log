@@ -1,0 +1,183 @@
+/* 
+Background: #E5E9E7
+Accent:  #8B9793
+Main: #182F28
+Secondary: #C5E863
+*/
+
+.main-profile-container {
+  display: flex;
+  height: 100%;
+  background-color: #e5e9e7;
+  padding: 4rem;
+  flex-direction: column;
+}
+
+.profile-header-section {
+  display: flex;
+  background-color: #182f28;
+  flex-direction: row;
+  padding: 50px;
+  border-radius: 15px;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.profile-name {
+  font-size: 4rem;
+  color: #c5e863;
+  font-weight: 500;
+}
+
+.profile-details {
+  display: flex;
+  flex-direction: column;
+  padding-left: 20px;
+  justify-content: center;
+}
+
+.profile-img-box {
+  display: flex;
+  justify-content: center;
+}
+
+.profile-img {
+  height: 16rem;
+  width: 16rem;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.occupation {
+  color: #ffff;
+  font-size: 28px;
+}
+
+.bio-header {
+  color: #8b9793;
+  font-weight: 500;
+  font-size: 26px;
+}
+.bio {
+  color: #ffff;
+  font-size: 24px;
+}
+
+.profile-details h1,
+.profile-details p,
+.profile-details h2 {
+  margin: 0;
+  padding: 0;
+}
+.profile-details .bio-header {
+  margin-top: 20px;
+}
+.contact-info-section {
+  display: flex;
+  background-color: #ffff;
+  flex-direction: column;
+  padding: 50px;
+  border-radius: 15px;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+
+.contact-info-header {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.contact-info-header h2 {
+  font-size: 32px;
+  font-weight: 600;
+}
+
+.edit-button {
+  width: 6rem;
+  height: 3rem;
+  color: #c5e863;
+  background-color: #182f28;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  padding: 14px 30px;
+}
+
+.contact-details {
+  font-size: 20px;
+  color: #8b9793;
+}
+
+.connected-platforms-section {
+  display: flex;
+  background-color: #ffff;
+  flex-direction: column;
+  padding: 50px;
+  border-radius: 15px;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+
+.connected-platforms-header {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.connected-platforms-header h2 {
+  font-size: 32px;
+  font-weight: 600;
+}
+
+.connected-platforms-details {
+  display: flex;
+  flex-direction: row;
+}
+.connected-platforms-details p {
+  margin-right: 20px;
+}
+
+.billing-info-section {
+  display: flex;
+  background-color: #ffff;
+  flex-direction: column;
+  padding: 50px;
+  border-radius: 15px;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+.billing-info-header {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.billing-info-header h2 {
+  font-size: 32px;
+  font-weight: 600;
+}
+
+.billing-details {
+  font-size: 20px;
+  color: #8b9793;
+}
+
+.delete-profile-section {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+}
+.delete-account-btn {
+  background: none;
+  box-shadow: none;
+  border: none;
+  color: rgb(168, 2, 2);
+}

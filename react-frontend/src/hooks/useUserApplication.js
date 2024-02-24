@@ -27,7 +27,7 @@ const useUserApplication = (userId) => {
     const fetchUserApplications = async () => {
       try {
         const token = localStorage.getItem("token");
-        if (!token) {
+        if (!token || token === undefined) {
           throw new Error("No token available");
         }
 
@@ -39,7 +39,6 @@ const useUserApplication = (userId) => {
             },
           }
         );
-        console.log("RESPONSE HERE: ", response);
 
         if (!response.ok) {
           throw new Error("Error fetching user applications");

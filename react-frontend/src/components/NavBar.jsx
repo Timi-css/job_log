@@ -1,8 +1,8 @@
+import React from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
 import "../styles/Navbar.css";
-import { images } from "../constants";
+// import { images } from "../constants";
 import { useRef } from "react";
-
 const NavBar = () => {
   const navRef = useRef();
 
@@ -28,13 +28,19 @@ const NavBar = () => {
             Dashboard
           </a>
         </li>
+
         <li className="nav-link-list">
           <a className="nav-link" href="/about">
             About
           </a>
         </li>
         <li className="nav-link-list">
-          <a className="nav-link" href="/login">
+          <a className="nav-link" href="/">
+            Features
+          </a>
+        </li>
+        <li className="nav-link-list">
+          <a className="nav-link-login" href="login">
             Login
           </a>
         </li>

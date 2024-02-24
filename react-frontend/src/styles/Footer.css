@@ -2,14 +2,13 @@
   background-color: #00100b;
   padding: 20px 40px;
   height: auto;
-  margin-top: 3rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  width: 100%;
   bottom: 0;
-  position: fixed;
+  /* position: fixed; */
+  width: 100%;
 }
 
 .logo-box {

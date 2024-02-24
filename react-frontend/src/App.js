@@ -1,42 +1,51 @@
 import "./App.css";
 import {
-  Body,
   Footer,
   NavBar,
+  NavBar2,
   HeroSection,
   SignUp,
   Dashboard,
   Login,
   NewApplication,
+  Profile,
+  JobDetail,
 } from "./components";
 import { Error, Loader } from "./common";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import React from "react";
-import { PrivateRoute } from "./components/PrivateRoute";
+import React, { useState } from "react";
 
 function App() {
   const [data, setData] = React.useState(null);
-
   React.useEffect(() => {
     fetch("/api")
       .then((res) => res.json())
       .then((data) => setData(data.message));
   }, []);
 
+  const [token, setToken] = useState();
+
   return (
     <BrowserRouter>
       <div className="main-App">
-        <NavBar />
+        <NavBar2 />
         <Routes>
-          <Route path="/" exact element={<HeroSection />} />
-          <Route path="/signup" exact element={<SignUp />} />
-          <Route path="/dashboard" exact element={<Dashboard />} />
-          <Route path="/login" exact element={<Login />} />
-          <Route path="/error" exact element={<Error />} />
-          <Route path="/loader" exact element={<Loader />} />
-          <Route path="/NewApplication" exact element={<NewApplication />} />
+          <Route path="/" element={<HeroSection />} />
+          <Route path="/signup" element={<SignUp />} />
+
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route
+            path="/dashboard/NewApplication"
+            element={<NewApplication />}
+          />
+          <Route path="/profile" element={<Profile />} />
+
+          <Route path="/login" element={<Login />} />
+          <Route path="/error" element={<Error />} />
+          <Route path="/loader" element={<Loader />} />
+          <Route path="/job-detail/:applicationId" element={<JobDetail />} />
         </Routes>
-        <Footer />
+        <Footer className="footer" />
       </div>
     </BrowserRouter>
   );

@@ -1,3 +1,9 @@
+/* 
+Background: #E5E9E7
+Accent:  #8B9793
+Main: #182F28
+Secondary: #C5E863
+*/
 .main-nav-container {
   display: flex;
   flex-direction: row;
@@ -6,7 +12,9 @@
   padding: 20px 40px;
   position: sticky;
   top: 0;
-  background-color: #f4f2f3;
+  background-color: #e5e9e7;
+  border-bottom: #8b9793 0.5px solid;
+  z-index: 1000;
 }
 
 .menu-icon {
@@ -16,7 +24,7 @@
 .logo {
   font-family: "Outfit", sans-serif;
   text-decoration: none;
-  color: #000;
+  color: #182f28;
   font-weight: 800;
 }
 
@@ -46,18 +54,35 @@
   border: 1px solid #000;
   padding: 10px 20px;
   border-radius: 5px;
-
   color: #000;
   font-size: 14px;
   background: none;
 }
 
 .nav-link-signup {
-  background-color: #59cd90;
+  background-color: #182f28;
   padding: 10px 20px;
   border-radius: 5px;
-  color: #000;
-  border: 1px solid #59cd90;
+  color: #c5e863;
+  transition: 0.3s all ease-in;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.nav-link-login:hover {
+  border: 1px solid #182f28;
+  padding: 10px 20px;
+  border-radius: 5px;
+  color: #ffff;
+  font-size: 14px;
+  background-color: #182f28;
+}
+
+.nav-link-login {
+  padding: 10px 20px;
+  border-radius: 5px;
+  color: #182f28;
+  border: 1px solid #182f28;
   transition: 0.3s all ease-in;
   text-decoration: none;
   font-size: 14px;

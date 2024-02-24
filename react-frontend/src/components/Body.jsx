@@ -6,62 +6,194 @@ import "../styles/Body.css";
 const Body = () => {
   return (
     <div className="main-body-container">
-      <div className="body-image-box">
-        <img
-          className="body-image"
-          src={images.CoordinationTwo}
-          alt="body-img"
-        />
-      </div>
-
-      <div className="body-text">
-        <div className="body-header-box">
-          <h1 className="body-header">Coordination</h1>
-        </div>
-        <div className="body-description-box">
-          <div className="body-description">
-            Job log exists to help you organize and coordinate your job
-            application as you go on the job search journey. <br></br>
-            Keeping track of the jobs and interviews you have had can help to
-            track trends and habits that will help you as you progress through
-            the ranks
-          </div>
-        </div>
-      </div>
-
-      <div className="body-text">
-        <div className="body-header-box">
-          <h1 className="body-header">Real-Time Connection</h1>
-        </div>
-        <div className="body-description-box">
-          <p className="body-description">
-            Job log seamlessly connects with popular job application platforms,
-            ensuring you have all the information you need in one place.
-            <br></br>
-            With a single click, import your job applications and relevant
-            details directly from these platforms.
+      <section className="features-section">
+        <div className="features-header-box">
+          <h2 className="features-header">
+            AI Features that helps you focus <br></br> on the things that matter
+          </h2>
+          <p className="features-text">
+            JOBLOG provides you with a range of features to help you optimize
+            your job search
           </p>
         </div>
-        <div className="platform-list">
-          <div className="platform">
-            <img className="icon" src={images.LinkedIn} alt="LinkedIn Icon" />
+        <div className="features-card-box">
+          <div className="feature-card">
+            <div className="card-icon">
+              <img className="card-image" src={images.Feature} alt="hero-img" />
+            </div>
+            <h3 className="card-header">Manage Applications</h3>
+            <p className="card-text">
+              JOBLOG allows you to manage applications seamlessly and allows you
+              to focus on the things that matter the most to you
+            </p>
+            <a className="learn-more" href="/">
+              Learn more
+            </a>
           </div>
-          <div className="platform">
-            <img className="icon" src={images.Indeed} alt="Indeed Icon" />
+          {/* ================================================== */}
+          <div className="feature-card">
+            <div className="card-icon">
+              <img className="card-image" src={images.AI} alt="hero-img" />
+            </div>
+            <h3 className="card-header">AI Applications</h3>
+            <p className="card-text">
+              JOBLOG allows you to manage applications seamlessly and allows you
+              to focus on the things that matter the most to you
+            </p>
+            <a className="learn-more" href="/">
+              Learn more
+            </a>
           </div>
-          <div className="platform">
-            <img className="icon" src={images.Glasdoor} alt="Indeed Icon" />
+          {/* ================================================== */}
+          <div className="feature-card">
+            <div className="card-icon">
+              <img className="card-image" src={images.Alarm} alt="hero-img" />
+            </div>
+            <h3 className="card-header">Reminder Emails</h3>
+            <p className="card-text">
+              JOBLOG allows you to manage applications seamlessly and allows you
+              to focus on the things that matter the most to you
+            </p>
+            <a className="learn-more" href="/">
+              Learn more
+            </a>
+          </div>
+          {/* ================================================== */}
+        </div>
+      </section>
+      <section className="time-section">
+        <div className="time-box">
+          <div className="time-image-box">
+            <img
+              className="time-image"
+              src={images.Misc}
+              alt="lady on a phone"
+            />
+          </div>
+          {/* ================================================== */}
+          <div className="time-misc-container">
+            <div className="time-content-box">
+              <h2 className="time-content-header">
+                Save time managing your applictions
+              </h2>
+              <p className="time-content-paragraph">
+                Many job seekers spend at least 65% of their time manageing and
+                tracking their applications. Let JOBLOG do the hard work foor
+                you.
+              </p>
+            </div>
+            {/* ================================================== */}
+            <div className="time-content-misc-box">
+              <div className="time-content-misc">
+                <img className="time-misc-img" src={images.Clock} alt="clock" />
+                <h3 className="time-misc-header">Time Saving</h3>
+                <p className="time-misc-text">
+                  Save time with JOBLOG's automatic application logging and
+                  <br></br>
+                  focus on getting those leads
+                </p>
+              </div>
+              <div className="time-content-misc">
+                <img className="time-misc-img" src={images.Mail} alt="mail" />
+                <h3 className="time-misc-header">Follow-Up Emails</h3>
+                <p className="time-misc-text">
+                  No need to worry about missing out on opportunities because
+                  <br></br>
+                  with our automated follow up email
+                </p>
+              </div>
+            </div>
+            {/* ================================================== */}
           </div>
         </div>
-      </div>
-
-      <div className="body-image-box">
-        <img
-          className="body-image"
-          src={images.CoordinationTwo}
-          alt="body-img"
-        />
-      </div>
+      </section>
+      <section className="testimonial-section">
+        <div className="testimonial-header-box">
+          <h1 className="testimonial-title">Hear from our Users</h1>
+        </div>
+        <div className="testimonial-cards-container">
+          <div className="testimonial-card-box">
+            <div className="testimonial-profile-box">
+              <img
+                src={images.Diana}
+                alt="user-profile"
+                className="testimonial-img"
+              />
+              <div className="testimonial-profile-content">
+                <h2 className="user-name">Diana</h2>
+                <p className="user-job">Project Manager</p>
+              </div>
+            </div>
+            <p className="testimonial-topic">Time and Cost Effective</p>
+            <span className="user-details">
+              I used JOBLOG for the first time a few weeks ago, since then I
+              have been using it every day.It is an amazing app that helps me
+              orgnanize my applications
+            </span>
+          </div>
+          {/* ================================================== */}
+          <div className="testimonial-card-box">
+            <div className="testimonial-profile-box">
+              <img
+                src={images.Brydon}
+                alt="user-profile"
+                className="testimonial-img"
+              />
+              <div className="testimonial-profile-content">
+                <h2 className="user-name">Brydon</h2>
+                <p className="user-job">Project Manager</p>
+              </div>
+            </div>
+            <p className="testimonial-topic">Time and Cost Effective</p>
+            <span className="user-details">
+              I used JOBLOG for the first time a few weeks ago, since then I
+              have been using it every day.It is an amazing app that helps me
+              orgnanize my applications
+            </span>
+          </div>
+          {/* ================================================== */}
+          <div className="testimonial-card-box">
+            <div className="testimonial-profile-box">
+              <img
+                src={images.Preeti}
+                alt="user-profile"
+                className="testimonial-img"
+              />
+              <div className="testimonial-profile-content">
+                <h2 className="user-name">Preeti</h2>
+                <p className="user-job">Project Manager</p>
+              </div>
+            </div>
+            <p className="testimonial-topic">Time and Cost Effective</p>
+            <span className="user-details">
+              I used JOBLOG for the first time a few weeks ago, since then I
+              have been using it every day.It is an amazing app that helps me
+              orgnanize my applications
+            </span>
+          </div>
+          {/* ================================================== */}
+          <div className="testimonial-card-box">
+            <div className="testimonial-profile-box">
+              <img
+                src={images.John}
+                alt="user-profile"
+                className="testimonial-img"
+              />
+              <div className="testimonial-profile-content">
+                <h2 className="user-name">John</h2>
+                <p className="user-job">Project Manager</p>
+              </div>
+            </div>
+            <p className="testimonial-topic">Time and Cost Effective</p>
+            <span className="user-details">
+              I used JOBLOG for the first time a few weeks ago, since then I
+              have been using it every day.It is an amazing app that helps me
+              orgnanize my applications
+            </span>
+          </div>
+          {/* ================================================== */}
+        </div>
+      </section>
     </div>
   );
 };

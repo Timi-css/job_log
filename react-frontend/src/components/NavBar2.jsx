@@ -1,43 +1,128 @@
-import React from "react";
-import { useState } from "react";
-import "../styles/NavBar2.css";
-import SignUp from "./SignUp";
-import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import React, { useEffect, useState, useRef } from "react";
+import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
+import "../styles/Navbar.css";
 
-const NavBar = () => {
+function NavBar2() {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const updateIsLoggedIn = (newValue) => {
+    setIsLoggedIn(newValue);
+  };
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token === null || token === "") {
+      setIsLoggedIn(false);
+    } else {
+      setIsLoggedIn(!!token);
+    }
+  }, []);
+
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    setIsLoggedIn(false);
+    navigate("/");
+  };
+
+  // ===========================================//
+
   return (
-    <div className="main-nav2-container">
+    <div>
+      {isLoggedIn ? (
+        <NavLoggedIn
+          handleLogout={handleLogout}
+          updateIsLoggedIn={updateIsLoggedIn}
+        />
+      ) : (
+        <NavLoggedOut updateIsLoggedIn={updateIsLoggedIn} />
+      )}
+    </div>
+  );
+}
+
+const NavLoggedIn = ({ handleLogout, updateIsLoggedIn }) => {
+  // ===================================================================//
+  const navRef = useRef();
+  return (
+    <div className="main-nav-container">
       <div className="logo-box">
-        <a href="/" className="logo">
+        <Link to="/" className="logo">
           JOBLOG
-        </a>
+        </Link>
       </div>
+      <nav ref={navRef} className="nav-links-container">
+        <div className="nav-links-container">
+          <li className="nav-link-list">
+            <Link className="nav-link" to="/">
+              Home
+            </Link>
+          </li>
+          <li className="nav-link-list">
+            <Link className="nav-link" to="/dashboard">
+              Dashboard
+            </Link>
+          </li>
 
-      <div className="nav-links-container">
-        <li className="nav-link-list">
-          <a className="nav-link" href="/">
-            Home
-          </a>
-        </li>
-        <li className="nav-link-list">
-          <a className="nav-link" href="/dashboard">
-            Dashboard
-          </a>
-        </li>
-        <li className="nav-link-list">
-          <a className="nav-link" href="/about">
-            About
-          </a>
-        </li>
-
-        <li className="nav-link-list">
-          <a className="nav-link-signup" href="/">
-            Log out
-          </a>
-        </li>
-      </div>
+          <li className="nav-link-list">
+            <Link
+              className="nav-link-signup"
+              to="/"
+              onClick={() => {
+                handleLogout();
+                updateIsLoggedIn(false);
+              }}
+            >
+              Log out
+            </Link>
+          </li>
+        </div>
+      </nav>
     </div>
   );
 };
 
-export default NavBar;
+const NavLoggedOut = ({ updateIsLoggedIn }) => {
+  const navRef = useRef();
+  return (
+    <div className="main-nav-container">
+      <div className="logo-box">
+        <Link to="/" className="logo">
+          JOBLOG
+        </Link>
+      </div>
+
+      <nav ref={navRef} className="nav-links-container">
+        <li className="nav-link-list">
+          <Link className="nav-link" to="/">
+            Home
+          </Link>
+        </li>
+
+        <li className="nav-link-list">
+          <Link className="nav-link" to="/about">
+            About
+          </Link>
+        </li>
+        <li className="nav-link-list">
+          <Link className="nav-link" to="/">
+            Features
+          </Link>
+        </li>
+        <li className="nav-link-list">
+          <Link className="nav-link-login" to="login">
+            Login
+          </Link>
+        </li>
+        <li className="nav-link-list">
+          <Link className="nav-link-signup" to="signup">
+            SignUp
+          </Link>
+        </li>
+      </nav>
+    </div>
+  );
+};
+
+export default NavBar2;

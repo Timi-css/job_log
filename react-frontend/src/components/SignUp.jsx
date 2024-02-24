@@ -2,9 +2,8 @@ import React, { useState } from "react";
 import { images } from "../constants";
 import "../styles/SignUp.css";
 import useApi from "../hooks/useApi";
-
 import { useNavigate } from "react-router-dom";
-import { Error } from "../common";
+import { Error, Loader } from "../common";
 
 const SignUp = () => {
   const navigate = useNavigate();
@@ -80,6 +79,9 @@ const SignUp = () => {
     <div className="main-signup-container">
       <div className="signup-form-container">
         <div className="signup-header-box">
+          <a href="/" className="logo">
+            JOBLOG
+          </a>
           <h1 className="signup-header">Sign Up</h1>
         </div>
         <div className="signup-form">
@@ -124,18 +126,30 @@ const SignUp = () => {
               value={formData.password}
               onChange={handleChange}
             />
-            {loading && <p>Loading...</p>}
+            {loading && <Loader />}
             {localError && <Error message={localError} />}
             <button type="submit" className="signup-btn">
               Sign Up
             </button>
+            or
+            <button type="submit" className="signup-google-btn">
+              Sign up with Google
+            </button>
+            <span className="signup-login">
+              Already have an account?{" "}
+              <a className="signup-login" href="/login">
+                Login
+              </a>
+            </span>
           </form>
         </div>
       </div>
       <div className="signup-image-container">
-        <div className="signup-image-box">
-          <img className="signup-img" src={images.Signup} alt="Signup" />
-        </div>
+        <img className="signup-img" src={images.Signup} alt="Signup" />
+        <h2 className="image-text">
+          {" "}
+          Join millions of users to simplify the job search process
+        </h2>
       </div>
     </div>
   );

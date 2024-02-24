@@ -3,9 +3,8 @@ import { images } from "../constants";
 import "../styles/Login.css";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-// import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import useApi from "../hooks/useApi";
-import { Error } from "../common";
+import { Error, Loader } from "../common";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -22,9 +21,10 @@ const Login = () => {
     console.log("Handle Login Started");
 
     if (!email || !password) {
-      setError("Feilds cannot be empty");
+      setError("Please enter email and password");
       return;
     }
+
     try {
       setLoading(true);
       const response = await fetch(url, {
@@ -34,16 +34,21 @@ const Login = () => {
         },
         body: JSON.stringify({ email, password }),
       });
-      console.log("We got here");
-      console.log(response);
+      if (response.status !== 200) {
+        console.log(`RESPONSE STATUS: ${response.status}`);
+        console.log("Invalid Credentials");
+        setError("Incorrect email or password");
+        return;
+      }
+
+      const data = await response.json();
       if (response.status === 200) {
-        const data = await response.json();
-        const token = data.data;
+        console.log(`RESPONSE STATUS: ${response.status}`);
+        const token = data.token;
         localStorage.setItem("token", token);
-        console.log("Login Successful: ", data);
+        console.log("Login Successful: ");
         navigate("/dashboard");
       } else {
-        const data = await response.json();
         setError(data.message, "An error occured during login");
       }
     } catch (error) {
@@ -79,8 +84,7 @@ const Login = () => {
                 Forgot password??
               </a>
             </div>
-            {loading && <p>Loading...</p>}
-            {apiError && <Error message={apiError} />}
+            {loading && <Loader />}
             {error && <Error message={error} />}
             <button type="submit" className="login-btn">
               Login
@@ -88,10 +92,10 @@ const Login = () => {
           </form>
 
           {/* ============================================== */}
-          <a className="login-google-btn" href="/Dashboard">
+          <button className="login-google-btn" href="/Dashboard">
             <img className="google" src={images.Google} alt="google" />
             Login with Google
-          </a>
+          </button>
         </div>
       </div>
       <div className="login-image-container">

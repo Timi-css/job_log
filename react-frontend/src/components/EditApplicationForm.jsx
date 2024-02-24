@@ -1,12 +1,15 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { Error } from "../common";
 import useApi from "../hooks/useApi";
-import "../styles/NewApplication.css";
+import { useJobApplication } from "../hooks";
 
-const NewApplication = ({ show, cancel }) => {
+const EditApplicationForm = ({ show, cancel }) => {
   const navigate = useNavigate();
-  const url = "http://localhost:8080/api/create-applications";
+  const applicationId = useParams();
+  const { error, application } = useJobApplication(applicationId);
+
+  const url = `http://localhost8080/api/user-applicaiton/${applicationId}`;
   const { loading, setLoading } = useApi(url);
 
   const [formData, setFormData] = useState({
@@ -34,8 +37,12 @@ const NewApplication = ({ show, cancel }) => {
       "jobTitle",
       "company",
       "dateApplied",
-      "resume",
-      "coverLetter",
+      "resumePath",
+      "coverLetterPath",
+      "interviewStage",
+      "offerStatus",
+      "jobDescription",
+      "notes",
     ];
     const emptyField = requiredFields.find((field) => !formData[field]);
 
@@ -54,7 +61,7 @@ const NewApplication = ({ show, cancel }) => {
       }
 
       const response = await fetch(url, {
-        method: "POST",
+        method: "PUT",
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -104,15 +111,22 @@ const NewApplication = ({ show, cancel }) => {
             onChange={handleChange}
           />
           <input
+            placeholder="Intervie Stage"
+            type="text"
+            name="interviewStage"
+            value={formData.interviewStage}
+            onChange={handleChange}
+          />
+          <input
             placeholder="Resume"
             type="file"
-            name="resume"
+            name="resumePath"
             onChange={handleChange}
           />
           <input
             placeholder="Cover letter"
             type="file"
-            name="coverLetter"
+            name="coverLetterPath"
             onChange={handleChange}
           />
           {loading && <p>Loading...</p>}
@@ -131,4 +145,4 @@ const NewApplication = ({ show, cancel }) => {
   );
 };
 
-export default NewApplication;
+export default EditApplicationForm;

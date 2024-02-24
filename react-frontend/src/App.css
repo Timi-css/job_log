@@ -3,6 +3,11 @@ Primary: #59cd90
 Dark: #00100b
 Light: #f5f5f5
 */
+html,
+body,
+.main-App {
+  height: 100%;
+}
 
 .main-App {
   font-family: "Outfit", sans-serif;
@@ -12,4 +17,8 @@ Light: #f5f5f5
 .App {
   font-family: "Outfit", sans-serif;
   background-color: #f5f5f5;
+}
+
+.footer {
+  bottom: 0;
 }
