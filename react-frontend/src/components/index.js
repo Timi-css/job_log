@@ -10,4 +10,4 @@ export { default as NewApplication } from "./NewApplication";
 export { default as SignUp } from "./SignUp";
 export { default as Profile } from "./Profile";
 export { default as JobDetail } from "./JobDetail";
-// export { default as NavBar2 } from "./NavBar2";
+export { default as EditApplicationForm } from "./EditApplicationForm";

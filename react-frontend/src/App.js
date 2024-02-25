@@ -13,7 +13,7 @@ import {
 } from "./components";
 import { Error, Loader } from "./common";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import React, { useState } from "react";
+import React from "react";
 
 function App() {
   const [data, setData] = React.useState(null);
@@ -23,8 +23,6 @@ function App() {
       .then((data) => setData(data.message));
   }, []);
 
-  const [token, setToken] = useState();
-
   return (
     <BrowserRouter>
       <div className="main-App">
@@ -32,14 +30,12 @@ function App() {
         <Routes>
           <Route path="/" element={<HeroSection />} />
           <Route path="/signup" element={<SignUp />} />
-
           <Route path="/dashboard" element={<Dashboard />} />
           <Route
             path="/dashboard/NewApplication"
             element={<NewApplication />}
           />
           <Route path="/profile" element={<Profile />} />
-
           <Route path="/login" element={<Login />} />
           <Route path="/error" element={<Error />} />
           <Route path="/loader" element={<Loader />} />

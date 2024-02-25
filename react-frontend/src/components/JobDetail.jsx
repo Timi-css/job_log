@@ -4,11 +4,14 @@ import { useJobApplication } from "../hooks";
 import { Error, Loader } from "../common";
 import { Document, Page } from "react-pdf";
 import DocViewer, { DocViewerRenderers } from "@cyntler/react-doc-viewer";
+import EditApplicationForm from "./EditApplicationForm";
 import "../styles/JobDetail.css";
 
 const JobDetail = () => {
   const { applicationId } = useParams();
   const { loading, error, application } = useJobApplication(applicationId);
+
+  const [editing, setEditing] = useState(false);
 
   const navigate = useNavigate();
   useEffect(() => {
@@ -21,23 +24,23 @@ const JobDetail = () => {
   }, []);
   // handleEditApplication
 
-  const handleEditApplication = async () => {
-    try {
-      await fetch(
-        `http://localhost8080/api/user-applicaiton/${applicationId}`,
-        {
-          method: "PUT",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${localStorage.getItem("token")}`,
-          },
-        }
-      );
-    } catch (error) {
-      console.log(error);
-      console.error(`Error updating application: ${error}`);
-    }
-  };
+  //   const handleEditApplication = async () => {
+  //     try {
+  //       await fetch(
+  //         `http://localhost8080/api/user-applicaiton/${applicationId}`,
+  //         {
+  //           method: "PUT",
+  //           headers: {
+  //             "Content-Type": "application/json",
+  //             Authorization: `Bearer ${localStorage.getItem("token")}`,
+  //           },
+  //         }
+  //       );
+  //     } catch (error) {
+  //       console.log(error);
+  //       console.error(`Error updating application: ${error}`);
+  //     }
+  //   };
 
   //handleDelete
   const handleDeleteApplication = async () => {
@@ -84,6 +87,10 @@ const JobDetail = () => {
     },
   ].filter(Boolean);
 
+  const handleEditApplication = () => {
+    setEditing(true);
+  };
+
   return (
     <div className="main-jd-container">
       <div className="jd-header-box">
@@ -99,7 +106,9 @@ const JobDetail = () => {
           {application ? application.interviewStage : ""}
         </p>
         <h2 className="interview-stage">Offer</h2>
-        <p className="offer-info">{application ? application.offer : ""}</p>
+        <p className="offer-info">
+          {application ? application.offerStatus : ""}
+        </p>
         <h2 className="interview-stage">Documents</h2>
         <div className="document-container">
           <div className="document-box">
@@ -144,6 +153,13 @@ const JobDetail = () => {
           Delete this Application
         </button>
       </div>
+      {editing && (
+        <EditApplicationForm
+          show={editing}
+          cancel={() => setEditing(false)}
+          applicationId={applicationId}
+        />
+      )}
     </div>
   );
 };

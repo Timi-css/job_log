@@ -3,13 +3,16 @@ import { useNavigate, useParams } from "react-router-dom";
 import { Error } from "../common";
 import useApi from "../hooks/useApi";
 import { useJobApplication } from "../hooks";
+import "../styles/NewApplication.css";
+import NewApplication from "./NewApplication";
 
 const EditApplicationForm = ({ show, cancel }) => {
   const navigate = useNavigate();
   const applicationId = useParams();
   const { error, application } = useJobApplication(applicationId);
 
-  const url = `http://localhost8080/api/user-applicaiton/${applicationId}`;
+  const url = `http://localhost:8080/api/user-applicaiton/${applicationId}`;
+
   const { loading, setLoading } = useApi(url);
 
   const [formData, setFormData] = useState({
@@ -18,6 +21,10 @@ const EditApplicationForm = ({ show, cancel }) => {
     dateApplied: "",
     resumePath: null,
     coverLetterPath: null,
+    interviewStage: "",
+    offerStatus: "",
+    jobDescription: "",
+    notes: "",
   });
 
   const handleChange = (e) => {
@@ -111,10 +118,17 @@ const EditApplicationForm = ({ show, cancel }) => {
             onChange={handleChange}
           />
           <input
-            placeholder="Intervie Stage"
+            placeholder="Interview Stage"
             type="text"
             name="interviewStage"
             value={formData.interviewStage}
+            onChange={handleChange}
+          />
+          <input
+            placeholder="Offer Status"
+            type="text"
+            name="offerStatus"
+            value={formData.offerStatus}
             onChange={handleChange}
           />
           <input
@@ -127,6 +141,20 @@ const EditApplicationForm = ({ show, cancel }) => {
             placeholder="Cover letter"
             type="file"
             name="coverLetterPath"
+            onChange={handleChange}
+          />
+          <input
+            placeholder="Job description"
+            type="text"
+            name="jobDescription"
+            value={formData.jobDescription}
+            onChange={handleChange}
+          />
+          <input
+            placeholder="Notes"
+            type="text"
+            name="notes"
+            value={formData.notes}
             onChange={handleChange}
           />
           {loading && <p>Loading...</p>}
