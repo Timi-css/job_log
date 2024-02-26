@@ -28,7 +28,8 @@ Secondary: #C5E863
 .features-card-box {
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: center;
+  gap: 3rem;
   margin: 8rem 0;
 }
 

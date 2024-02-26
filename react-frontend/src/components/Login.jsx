@@ -46,7 +46,10 @@ const Login = () => {
         console.log(`RESPONSE STATUS: ${response.status}`);
         const token = data.token;
         localStorage.setItem("token", token);
+        localStorage.setItem("loginTime", Date.now());
         console.log("Login Successful: ");
+        console.log("Time set in LS", Date.now());
+
         navigate("/dashboard");
       } else {
         setError(data.message, "An error occured during login");

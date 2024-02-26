@@ -4,14 +4,14 @@ import { Error } from "../common";
 import useApi from "../hooks/useApi";
 import { useJobApplication } from "../hooks";
 import "../styles/NewApplication.css";
-import NewApplication from "./NewApplication";
 
 const EditApplicationForm = ({ show, cancel }) => {
   const navigate = useNavigate();
   const applicationId = useParams();
   const { error, application } = useJobApplication(applicationId);
-
-  const url = `http://localhost:8080/api/user-applicaiton/${applicationId}`;
+  console.log(applicationId.applicationId, "<=======APP ID HERE");
+  const url = `http://localhost:8080/api/user-applicaiton/${applicationId.applicationId}`;
+  console.log("URL======> ", url);
 
   const { loading, setLoading } = useApi(url);
 
@@ -66,7 +66,7 @@ const EditApplicationForm = ({ show, cancel }) => {
       for (const key in formData) {
         form.append(key, formData[key]);
       }
-
+      console.log("FORM  DATA: ", form);
       const response = await fetch(url, {
         method: "PUT",
         headers: {
@@ -77,7 +77,9 @@ const EditApplicationForm = ({ show, cancel }) => {
 
       if (response.ok) {
         console.log("New Application Created - Success");
-        document.location.reload();
+        console.log("Reloading  page...");
+        // document.location.reload();
+        // navigate("/dashboard");
       } else {
         console.error("Error saving new application");
       }

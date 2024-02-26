@@ -21,7 +21,7 @@ const JobDetail = () => {
       navigate("/login");
       return;
     }
-  }, []);
+  }, [navigate]);
   // handleEditApplication
 
   //   const handleEditApplication = async () => {
@@ -61,6 +61,9 @@ const JobDetail = () => {
       console.error(`Error deleting application: ${error}`);
     }
   };
+  const handleEditApplication = () => {
+    setEditing(true);
+  };
 
   if (loading) {
     return <Loader />;
@@ -86,10 +89,6 @@ const JobDetail = () => {
       uri: require(`/Users/timialabi/job_log-1/express-backend/uploads/${application.coverLetterPath}`),
     },
   ].filter(Boolean);
-
-  const handleEditApplication = () => {
-    setEditing(true);
-  };
 
   return (
     <div className="main-jd-container">
